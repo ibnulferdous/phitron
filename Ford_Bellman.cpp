@@ -26,9 +26,9 @@ int main(void)
     int dis[n + 1];
 
     // Assigning infinity into distance array
-    for (int i : dis)
+    for (int i = 1; i <= n; i++)
     {
-        i = INT_MAX;
+        dis[i] = INT_MAX;
     }
 
     // making the distance of source as 0
@@ -39,7 +39,7 @@ int main(void)
     {
         int u, v, w;
         cin >> u >> v >> w;
-
+ 
         Edge ed(u, v, w);
 
         adj.push_back(ed);
@@ -54,8 +54,10 @@ int main(void)
             int u = ed.u;
             int v = ed.v;
             int w = ed.w;
+            
+            if (dis[u] == INT_MAX) continue;
 
-            if (dis[u] < INT_MAX &&  dis[v] > dis[u] + w) 
+            if (dis[v] > dis[u] + w) 
             // Relaxation is not possible if distance of U is infinity
             {
                 dis[v] = dis[u] + w;
@@ -63,7 +65,11 @@ int main(void)
         }
     }
 
-    
+    for (int i = 1; i <= n; i++)
+    {
+        int res = dis[i] == INT_MAX? 30000 : dis[i];
+        cout << res << " ";
+    }
 
     return 0;
 }
