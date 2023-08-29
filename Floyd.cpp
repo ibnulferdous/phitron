@@ -7,7 +7,7 @@ int main(void)
     int n, max_distance = 0;
     cin >> n;
 
-    long int dis[n+1][n+1];
+    int dis[n+1][n+1];
 
     for (int i = 1; i <= n; i++)
     {
@@ -41,7 +41,7 @@ int main(void)
     {
         for (int j = 1; j <= n; j++)
         {
-            if(dis[i][j] > max_distance) {
+            if(dis[i][j] != INT_MAX && dis[i][j] > max_distance) {
                 max_distance = dis[i][j];
             }
         }
