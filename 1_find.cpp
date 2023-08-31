@@ -11,7 +11,6 @@ int find_leader(int node)
     {
         node = parent[node];
     }
-
     return node;
 }
 
